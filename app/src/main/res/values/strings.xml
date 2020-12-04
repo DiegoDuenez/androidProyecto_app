@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">ProyectoAvanze</string>
+    <string name="Iniciarsesion">Iniciar sesion</string>
+    <string name="Registrate">Registrate</string>
+    <string name="correo">Email</string>
+    <string name="Contraseña">Contraseña</string>
+    <string name="BIENVENIDO">BIENVENIDO</string>
+    <string name="Permisos">Favor de conceder los permisos</string>
+    <string name="salir">Salir</string>
+    <string name="conceder">Conceder permisos y acceder</string>
+
+    <string name="ss1">ProyectoAvanze</string>
+
+    <string name="ss2">ProyectoAvanze</string>
+
+    <string name="ss3">ProyectoAvanze</string>
+
+    <string name="ss4">ProyectoAvanze</string>
+
+    <string name="ss5">ProyectoAvanze</string>
+
+    <string name="ss6">ProyectoAvanze</string>
+
+    <string name="ss7">ProyectoAvanze</string>
+
+
+
+
+
+
+</resources>
