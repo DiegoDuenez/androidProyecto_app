@@ -8,6 +8,7 @@
     <string name="Permisos">Favor de conceder los permisos</string>
     <string name="salir">Salir</string>
     <string name="conceder">Conceder permisos y acceder</string>
+    <string name="usuario_nombre">user_name</string>
 
     <string name="ss1">ProyectoAvanze</string>
 
@@ -22,10 +23,6 @@
     <string name="ss6">ProyectoAvanze</string>
 
     <string name="ss7">ProyectoAvanze</string>
-
-
-
-
 
 
 </resources>

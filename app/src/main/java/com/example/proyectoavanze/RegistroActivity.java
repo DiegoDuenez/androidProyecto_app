@@ -34,7 +34,7 @@ public class RegistroActivity extends AppCompatActivity {
 
 
     public void botonRegistrar(View view) {
-        String urlRegistro = "http://192.168.0.107:8000/api/newUserVic";
+        String urlRegistro = "http://192.168.1.68:8000/api/registro";
         EditText username = findViewById(R.id.username);
         EditText email = findViewById(R.id.email);
         EditText password = findViewById(R.id.password);
@@ -44,7 +44,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         JSONObject requestEnv = new JSONObject();
         try {
-            requestEnv.put("username", usernametxt);
+            requestEnv.put("name", usernametxt);
             requestEnv.put("email", emailtxt);
             requestEnv.put("password", passtxt);
 
