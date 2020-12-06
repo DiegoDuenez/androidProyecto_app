@@ -1,11 +1,13 @@
 package com.example.proyectoavanze;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,26 +22,23 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.sql.CommonDataSource;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private VolleyS carta;
-    private RequestQueue cartero;
-    private String token;
+    private VolleyS vs;
+    private RequestQueue requestQueue;
+    private String jwtToken;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        carta = VolleyS.getInstance(this.getApplicationContext());
-        cartero= carta.getRequestQueue();
+        vs = VolleyS.getInstance(this.getApplicationContext());
+        requestQueue= vs.getRequestQueue();
 
         findViewById(R.id.btn_login).setOnClickListener(this);
         findViewById(R.id.btn_reg_1).setOnClickListener(this);
@@ -58,8 +57,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.btn_login:
-
-
                 String urlRegistro = "http://192.168.1.68:8000/api/login";
                 EditText email = findViewById(R.id.email);
                 EditText password = findViewById(R.id.password);
@@ -80,11 +77,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onResponse(JSONObject response) {
 
-                        token = response.toString();
+                       // token = response.toString();
+                        try {
+                            jwtToken = response.getString("token");
+
+                            Toast.makeText(LoginActivity.this, jwtToken, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Se logro la conexion se manera satisfactoria", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, UsuarioActivity.class);
+                            intent.putExtra("token", response.getString("token"));
+                            startActivity(intent);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
 
-                        Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(LoginActivity.this, "Se logro la conexion se manera satisfactoria", Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -95,34 +102,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
                         Toast.makeText(LoginActivity.this, "Error en la conexion de put/url/request", Toast.LENGTH_SHORT).show();
                     }
-                });
-               /* {
+                });/* {
 
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError{
-                        HashMap<String, String> headers = new HashMap<String, String>();
 
-                        headers.put("Content-Type", "application/json");
-                        headers.put("Bearer", token);
-                       Intent intent1 = new Intent(getApplicationContext(), UsuarioActivity.class);
-                        startActivity(intent1);
-                        Toast.makeText(LoginActivity.this, "Token enviado" + headers, Toast.LENGTH_SHORT).show();
-                        return headers;
+                   @Override
+                   public Map<String, String> getHeaders() throws AuthFailureError{
+                       try {
+                           Map<String, String> headers = new HashMap<String, String>();
+                           headers.put("Authorization", "Bearer" + jwtToken);
+                           Toast.makeText(LoginActivity.this, "Se logro la conexion se manera satisfactoria", Toast.LENGTH_SHORT).show();
+                           return headers;
+                       }catch (Exception e) {
+                           Log.e(jwtToken, "Authentication Filure" );
+                       }
+                       return super.getHeaders();
                     }
 
-                };*/
+               };*/
 
 
 
                 request.setRetryPolicy(new DefaultRetryPolicy(500000,
                         DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                cartero.add(request);
+                requestQueue.add(request);
                 break;
 
 
         }
 
     }
+
 
 }

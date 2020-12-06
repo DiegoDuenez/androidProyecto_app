@@ -1,5 +1,12 @@
 package com.example.proyectoavanze;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+
+import androidx.core.app.ActivityCompat;
+
 public class Permiso {
 
 
@@ -11,6 +18,8 @@ public class Permiso {
         this.nombre = nombre;
         this.permiso = permiso;
     }
+
+
 
 
     public String getPermiso() {

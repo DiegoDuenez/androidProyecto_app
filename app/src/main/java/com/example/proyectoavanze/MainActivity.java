@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent i = new Intent(MainActivity.this, PermisosActivity.class);
                     startActivity(i);
                     finish();
-                }else{
+                }if(permisoContactos == PackageManager.PERMISSION_GRANTED && permisoLlamar == PackageManager.PERMISSION_GRANTED){
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();

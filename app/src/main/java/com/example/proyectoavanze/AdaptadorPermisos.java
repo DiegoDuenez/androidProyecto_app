@@ -82,6 +82,8 @@ public class AdaptadorPermisos extends RecyclerView.Adapter<AdaptadorPermisos.Mi
                     if(permisoContactos == PackageManager.PERMISSION_GRANTED &&
                             permisoLlamar == PackageManager.PERMISSION_GRANTED){
                         ActivityCompat.startActivity(itemView.getContext(), new Intent(itemView.getContext(),LoginActivity.class),null);
+
+
                     }
 
                     return;
@@ -97,5 +99,7 @@ public class AdaptadorPermisos extends RecyclerView.Adapter<AdaptadorPermisos.Mi
            permisoTipo= p.getPermiso();
             this.activitypub=activitypub;
         }
+
+
     }
 }
