@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ProyectoAvanze</string>
     <string name="Iniciarsesion">Iniciar sesion</string>
+    <string name="Cerrarsesion">Cerrar sesion</string>
     <string name="Registrate">Registrate</string>
     <string name="correo">Email</string>
     <string name="Contraseña">Contraseña</string>
@@ -9,6 +10,9 @@
     <string name="salir">Salir</string>
     <string name="conceder">Conceder permisos y acceder</string>
     <string name="usuario_nombre">user_name</string>
+    <string name="datos">Datos</string>
+    <string name="encender">Endencer foco</string>
+    <string name="apagar">Apagar foco</string>
 
     <string name="ss1">ProyectoAvanze</string>
 

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +31,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private VolleyS vs;
     private RequestQueue requestQueue;
-    private String jwtToken;
+    private String jwtToken = null;
+
+
 
 
     @Override
@@ -49,6 +52,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        SharedPreferences appSharedPrefs = getSharedPreferences("settings",MODE_PRIVATE);
+        SharedPreferences.Editor appEditor = appSharedPrefs.edit();
         switch (v.getId()){
 
             case R.id.btn_reg_1:
@@ -77,22 +82,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onResponse(JSONObject response) {
 
-                       // token = response.toString();
+                        // token = response.toString();
                         try {
                             jwtToken = response.getString("token");
 
                             Toast.makeText(LoginActivity.this, jwtToken, Toast.LENGTH_SHORT).show();
                             Toast.makeText(LoginActivity.this, "Se logro la conexion se manera satisfactoria", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, UsuarioActivity.class);
-                            intent.putExtra("token", response.getString("token"));
+                            intent.putExtra("correo", emailtxt);
                             startActivity(intent);
+                            finish();
+
+
+
+
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
-
-
 
 
                     }
@@ -102,24 +109,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
                         Toast.makeText(LoginActivity.this, "Error en la conexion de put/url/request", Toast.LENGTH_SHORT).show();
                     }
-                });/* {
-
-
-                   @Override
-                   public Map<String, String> getHeaders() throws AuthFailureError{
-                       try {
-                           Map<String, String> headers = new HashMap<String, String>();
-                           headers.put("Authorization", "Bearer" + jwtToken);
-                           Toast.makeText(LoginActivity.this, "Se logro la conexion se manera satisfactoria", Toast.LENGTH_SHORT).show();
-                           return headers;
-                       }catch (Exception e) {
-                           Log.e(jwtToken, "Authentication Filure" );
-                       }
-                       return super.getHeaders();
-                    }
-
-               };*/
-
+                });
 
 
                 request.setRetryPolicy(new DefaultRetryPolicy(500000,

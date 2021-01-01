@@ -7,6 +7,35 @@
     android:background="@color/white"
     tools:context=".UsuarioActivity">
 
+    <TextView
+        android:id="@+id/fecha_actu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="266dp"
+        android:text="update_date"
+        android:textColor="@color/orange"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fecha_creacion" />
+
+    <TextView
+        android:id="@+id/fecha_creacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="196dp"
+        android:text="create_date"
+        android:textColor="@color/orange"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usuario_nombre" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -21,26 +50,75 @@
         android:id="@+id/usuario_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="84dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="279dp"
         android:text="@string/usuario_nombre"
         android:textColor="@color/orange"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <TextView
-        android:id="@+id/fecha_creacion"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btn_datos"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="84dp"
-        android:text="create_date"
-        android:textColor="@color/orange"
-        android:textSize="20dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/btn_login"
+        android:text="@string/datos"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/usuario_nombre" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_apagar" />
+
+
+    <Button
+        android:id="@+id/btn_encender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/btn_login"
+        android:text="@string/encender"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fecha_actu" />
+
+    <Button
+        android:id="@+id/btn_apagar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/btn_login"
+        android:text="@string/apagar"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_encender" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/btn_registro"
+        android:text="@string/Cerrarsesion"
+        android:textColor="@color/orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_datos" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
